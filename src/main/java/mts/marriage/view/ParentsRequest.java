@@ -1,49 +1,67 @@
 package mts.marriage.view;
 
+import mts.marriage.domain.LocalDateAdapter;
+
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class ParentsRequest implements Serializable {
 
     private String fatherSurName;
-    private String fatherGivenName;
-    private String fatherPatronymic;
-    private LocalDate fatherBirthDay;
+    private String fatherFirstName;
+    private String fatherPatronymicName;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate fatherDateOfBirth;
     private String fatherPassportSerial;
     private String fatherPassportNumber;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate fatherPassportDate;
 
     private String motherSurName;
-    private String motherGivenName;
-    private String motherPatronymic;
-    private LocalDate motherBirthDay;
+    private String motherFirstName;
+    private String motherPatronymicName;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate motherDateOfBirth;
     private String motherPassportSerial;
     private String motherPassportNumber;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate motherPassportDate;
 
-    private String parentCertNumber;
-    private LocalDate parentCertDate;
+    private String childSurName;
+    private String childFirstName;
+    private String childPatronymicName;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate childDateOfBirth;
+
+    private String birthCertNumber;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate birthCertDate;
 
 
     @Override
     public String toString() {
         return "ParentsRequest{" +
                 "fatherSurName='" + fatherSurName + '\'' +
-                ", fatherGivenName='" + fatherGivenName + '\'' +
-                ", fatherPatronymic='" + fatherPatronymic + '\'' +
-                ", fatherBirthDay=" + fatherBirthDay +
+                ", fatherFirstName='" + fatherFirstName + '\'' +
+                ", fatherPatronymicName='" + fatherPatronymicName + '\'' +
+                ", fatherDateOfBirth=" + fatherDateOfBirth +
                 ", fatherPassportSerial='" + fatherPassportSerial + '\'' +
                 ", fatherPassportNumber='" + fatherPassportNumber + '\'' +
                 ", fatherPassportDate=" + fatherPassportDate +
                 ", motherSurName='" + motherSurName + '\'' +
-                ", motherGivenName='" + motherGivenName + '\'' +
-                ", motherPatronymic='" + motherPatronymic + '\'' +
-                ", motherBirthDay=" + motherBirthDay +
+                ", motherFirstName='" + motherFirstName + '\'' +
+                ", motherPatronymicName='" + motherPatronymicName + '\'' +
+                ", motherDateOfBirth=" + motherDateOfBirth +
                 ", motherPassportSerial='" + motherPassportSerial + '\'' +
                 ", motherPassportNumber='" + motherPassportNumber + '\'' +
                 ", motherPassportDate=" + motherPassportDate +
-                ", parentCertNumber='" + parentCertNumber + '\'' +
-                ", parentCertDate=" + parentCertDate +
+                ", childSurName='" + childSurName + '\'' +
+                ", childFirstName='" + childFirstName + '\'' +
+                ", childPatronymicName='" + childPatronymicName + '\'' +
+                ", childDateOfBirth=" + childDateOfBirth +
+                ", birthCertNumber='" + birthCertNumber + '\'' +
+                ", birthCertDate=" + birthCertDate +
                 '}';
     }
 
@@ -55,28 +73,28 @@ public class ParentsRequest implements Serializable {
         this.fatherSurName = fatherSurName;
     }
 
-    public String getFatherGivenName() {
-        return fatherGivenName;
+    public String getFatherFirstName() {
+        return fatherFirstName;
     }
 
-    public void setFatherGivenName(String fatherGivenName) {
-        this.fatherGivenName = fatherGivenName;
+    public void setFatherFirstName(String fatherFirstName) {
+        this.fatherFirstName = fatherFirstName;
     }
 
-    public String getFatherPatronymic() {
-        return fatherPatronymic;
+    public String getFatherPatronymicName() {
+        return fatherPatronymicName;
     }
 
-    public void setFatherPatronymic(String fatherPatronymic) {
-        this.fatherPatronymic = fatherPatronymic;
+    public void setFatherPatronymicName(String fatherPatronymicName) {
+        this.fatherPatronymicName = fatherPatronymicName;
     }
 
-    public LocalDate getFatherBirthDay() {
-        return fatherBirthDay;
+    public LocalDate getFatherDateOfBirth() {
+        return fatherDateOfBirth;
     }
 
-    public void setFatherBirthDay(LocalDate fatherBirthDay) {
-        this.fatherBirthDay = fatherBirthDay;
+    public void setFatherDateOfBirth(LocalDate fatherDateOfBirth) {
+        this.fatherDateOfBirth = fatherDateOfBirth;
     }
 
     public String getFatherPassportSerial() {
@@ -111,28 +129,28 @@ public class ParentsRequest implements Serializable {
         this.motherSurName = motherSurName;
     }
 
-    public String getMotherGivenName() {
-        return motherGivenName;
+    public String getMotherFirstName() {
+        return motherFirstName;
     }
 
-    public void setMotherGivenName(String motherGivenName) {
-        this.motherGivenName = motherGivenName;
+    public void setMotherFirstName(String motherFirstName) {
+        this.motherFirstName = motherFirstName;
     }
 
-    public String getMotherPatronymic() {
-        return motherPatronymic;
+    public String getMotherPatronymicName() {
+        return motherPatronymicName;
     }
 
-    public void setMotherPatronymic(String motherPatronymic) {
-        this.motherPatronymic = motherPatronymic;
+    public void setMotherPatronymicName(String motherPatronymicName) {
+        this.motherPatronymicName = motherPatronymicName;
     }
 
-    public LocalDate getMotherBirthDay() {
-        return motherBirthDay;
+    public LocalDate getMotherDateOfBirth() {
+        return motherDateOfBirth;
     }
 
-    public void setMotherBirthDay(LocalDate motherBirthDay) {
-        this.motherBirthDay = motherBirthDay;
+    public void setMotherDateOfBirth(LocalDate motherDateOfBirth) {
+        this.motherDateOfBirth = motherDateOfBirth;
     }
 
     public String getMotherPassportSerial() {
@@ -159,19 +177,51 @@ public class ParentsRequest implements Serializable {
         this.motherPassportDate = motherPassportDate;
     }
 
-    public String getParentCertNumber() {
-        return parentCertNumber;
+    public String getChildSurName() {
+        return childSurName;
     }
 
-    public void setParentCertNumber(String parentCertNumber) {
-        this.parentCertNumber = parentCertNumber;
+    public void setChildSurName(String childSurName) {
+        this.childSurName = childSurName;
     }
 
-    public LocalDate getParentCertDate() {
-        return parentCertDate;
+    public String getChildFirstName() {
+        return childFirstName;
     }
 
-    public void setParentCertDate(LocalDate parentCertDate) {
-        this.parentCertDate = parentCertDate;
+    public void setChildFirstName(String childFirstName) {
+        this.childFirstName = childFirstName;
+    }
+
+    public String getChildPatronymicName() {
+        return childPatronymicName;
+    }
+
+    public void setChildPatronymicName(String childPatronymicName) {
+        this.childPatronymicName = childPatronymicName;
+    }
+
+    public LocalDate getChildDateOfBirth() {
+        return childDateOfBirth;
+    }
+
+    public void setChildDateOfBirth(LocalDate childDateOfBirth) {
+        this.childDateOfBirth = childDateOfBirth;
+    }
+
+    public String getBirthCertNumber() {
+        return birthCertNumber;
+    }
+
+    public void setBirthCertNumber(String birthCertNumber) {
+        this.birthCertNumber = birthCertNumber;
+    }
+
+    public LocalDate getBirthCertDate() {
+        return birthCertDate;
+    }
+
+    public void setBirthCertDate(LocalDate birthCertDate) {
+        this.birthCertDate = birthCertDate;
     }
 }

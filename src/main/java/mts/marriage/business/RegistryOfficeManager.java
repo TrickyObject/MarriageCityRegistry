@@ -198,44 +198,44 @@ public class RegistryOfficeManager {
 
         logger.info("setBirthCertQueryParam");
 
-        query.setParameter(count++, request.getFatherGivenName());
+        query.setParameter(count++, request.getFatherFirstName());
         query.setParameter(count++, request.getFatherSurName());
-        query.setParameter(count++, request.getFatherPatronymic());
-        query.setParameter(count++, request.getFatherBirthDay());
+        query.setParameter(count++, request.getFatherPatronymicName());
+        query.setParameter(count++, request.getFatherDateOfBirth());
         query.setParameter(count++, request.getFatherPassportSerial());
         query.setParameter(count++, request.getFatherPassportNumber());
         query.setParameter(count++, request.getFatherPassportDate());
 
-        query.setParameter(count++, request.getMotherGivenName());
+        query.setParameter(count++, request.getMotherFirstName());
         query.setParameter(count++, request.getMotherSurName());
-        query.setParameter(count++, request.getMotherPatronymic());
-        query.setParameter(count++, request.getMotherBirthDay());
+        query.setParameter(count++, request.getMotherPatronymicName());
+        query.setParameter(count++, request.getMotherDateOfBirth());
         query.setParameter(count++, request.getMotherPassportSerial());
         query.setParameter(count++, request.getMotherPassportNumber());
         query.setParameter(count++, request.getMotherPassportDate());
 
-        query.setParameter(count++, request.getParentCertNumber());
-        query.setParameter(count++, request.getParentCertDate());
+        query.setParameter(count++, request.getBirthCertNumber());
+        query.setParameter(count++, request.getBirthCertDate());
 
         logger.info("setMarriageCertQueryParam: "
-                + request.getFatherGivenName() + " "
+                + request.getFatherFirstName() + " "
                 + request.getFatherSurName() + " "
-                + request.getFatherPatronymic() + " "
-                + request.getFatherBirthDay() + " "
+                + request.getFatherPatronymicName() + " "
+                + request.getFatherDateOfBirth() + " "
                 + request.getFatherPassportSerial() + " "
                 + request.getFatherPassportNumber() + " "
                 + request.getFatherPassportDate() + " "
 
-                + request.getMotherGivenName() + " "
+                + request.getMotherFirstName() + " "
                 + request.getMotherSurName() + " "
-                + request.getMotherPatronymic() + " "
-                + request.getMotherBirthDay() + " "
+                + request.getMotherPatronymicName() + " "
+                + request.getMotherDateOfBirth() + " "
                 + request.getMotherPassportSerial() + " "
                 + request.getMotherPassportNumber() + " "
                 + request.getMotherPassportDate() + " "
 
-                + request.getParentCertNumber() + " "
-                + request.getParentCertDate());
+                + request.getBirthCertNumber() + " "
+                + request.getBirthCertDate());
 
         return query;
     }
