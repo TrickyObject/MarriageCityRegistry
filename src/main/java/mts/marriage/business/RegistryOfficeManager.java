@@ -150,18 +150,18 @@ public class RegistryOfficeManager {
 
         logger.info("setMarriageCertQueryParam");
 
-        query.setParameter(count++, request.getHusbandGivenName());
+        query.setParameter(count++, request.getHusbandFirstName());
         query.setParameter(count++, request.getHusbandSurName());
-        query.setParameter(count++, request.getHusbandPatronymic());
-        query.setParameter(count++, request.getHusbandBirthDay());
+        query.setParameter(count++, request.getHusbandPatronymicName());
+        query.setParameter(count++, request.getHusbandDateOfBirth());
         query.setParameter(count++, request.getHusbandPassportSerial());
         query.setParameter(count++, request.getHusbandPassportNumber());
         query.setParameter(count++, request.getHusbandPassportDate());
 
-        query.setParameter(count++, request.getWifeGivenName());
+        query.setParameter(count++, request.getWifeFirstName());
         query.setParameter(count++, request.getWifeSurName());
-        query.setParameter(count++, request.getWifePatronymic());
-        query.setParameter(count++, request.getWifeBirthDay());
+        query.setParameter(count++, request.getWifePatronymicName());
+        query.setParameter(count++, request.getWifeDateOfBirth());
         query.setParameter(count++, request.getWifePassportSerial());
         query.setParameter(count++, request.getWifePassportNumber());
         query.setParameter(count++, request.getWifePassportDate());
@@ -170,18 +170,18 @@ public class RegistryOfficeManager {
         query.setParameter(count++, request.getMarriageCertDate());
 
         logger.info("setMarriageCertQueryParam: "
-                + request.getHusbandGivenName() + " "
+                + request.getHusbandFirstName() + " "
                 + request.getHusbandSurName() + " "
-                + request.getHusbandPatronymic() + " "
-                + request.getHusbandBirthDay() + " "
+                + request.getHusbandPatronymicName() + " "
+                + request.getHusbandDateOfBirth() + " "
                 + request.getHusbandPassportSerial() + " "
                 + request.getHusbandPassportNumber() + " "
                 + request.getHusbandPassportDate() + " "
 
-                + request.getWifeGivenName() + " "
+                + request.getWifeFirstName() + " "
                 + request.getWifeSurName() + " "
-                + request.getWifePatronymic() + " "
-                + request.getWifeBirthDay() + " "
+                + request.getWifePatronymicName() + " "
+                + request.getWifeDateOfBirth() + " "
                 + request.getWifePassportSerial() + " "
                 + request.getWifePassportNumber() + " "
                 + request.getWifePassportDate() + " "

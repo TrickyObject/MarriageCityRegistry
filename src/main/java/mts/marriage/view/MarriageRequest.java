@@ -1,43 +1,51 @@
 package mts.marriage.view;
 
+import mts.marriage.domain.LocalDateAdapter;
+
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class MarriageRequest implements Serializable {
 
     private String husbandSurName;
-    private String husbandGivenName;
-    private String husbandPatronymic;
-    private LocalDate husbandBirthDay;
+    private String husbandFirstName;
+    private String husbandPatronymicName;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate husbandDateOfBirth;
     private String husbandPassportSerial;
     private String husbandPassportNumber;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate husbandPassportDate;
 
     private String wifeSurName;
-    private String wifeGivenName;
-    private String wifePatronymic;
-    private LocalDate wifeBirthDay;
+    private String wifeFirstName;
+    private String wifePatronymicName;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate wifeDateOfBirth;
     private String wifePassportSerial;
     private String wifePassportNumber;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate wifePassportDate;
 
     private String marriageCertNumber;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate marriageCertDate;
 
     @Override
     public String toString() {
         return "MarriageRequest{" +
                 "husbandSurName='" + husbandSurName + '\'' +
-                ", husbandGivenName='" + husbandGivenName + '\'' +
-                ", husbandPatronymic='" + husbandPatronymic + '\'' +
-                ", husbandBirthDay=" + husbandBirthDay +
+                ", husbandFirstName='" + husbandFirstName + '\'' +
+                ", husbandPatronymicName='" + husbandPatronymicName + '\'' +
+                ", husbandDateOfBirth=" + husbandDateOfBirth +
                 ", husbandPassportSerial='" + husbandPassportSerial + '\'' +
                 ", husbandPassportNumber='" + husbandPassportNumber + '\'' +
                 ", husbandPassportDate=" + husbandPassportDate +
                 ", wifeSurName='" + wifeSurName + '\'' +
-                ", wifeGivenName='" + wifeGivenName + '\'' +
-                ", wifePatronymic='" + wifePatronymic + '\'' +
-                ", wifeBirthDay=" + wifeBirthDay +
+                ", wifeFirstName='" + wifeFirstName + '\'' +
+                ", wifePatronymicName='" + wifePatronymicName + '\'' +
+                ", wifeDateOfBirth=" + wifeDateOfBirth +
                 ", wifePassportSerial='" + wifePassportSerial + '\'' +
                 ", wifePassportNumber='" + wifePassportNumber + '\'' +
                 ", wifePassportDate=" + wifePassportDate +
@@ -54,28 +62,28 @@ public class MarriageRequest implements Serializable {
         this.husbandSurName = husbandSurName;
     }
 
-    public String getHusbandGivenName() {
-        return husbandGivenName;
+    public String getHusbandFirstName() {
+        return husbandFirstName;
     }
 
-    public void setHusbandGivenName(String husbandGivenName) {
-        this.husbandGivenName = husbandGivenName;
+    public void setHusbandFirstName(String husbandFirstName) {
+        this.husbandFirstName = husbandFirstName;
     }
 
-    public String getHusbandPatronymic() {
-        return husbandPatronymic;
+    public String getHusbandPatronymicName() {
+        return husbandPatronymicName;
     }
 
-    public void setHusbandPatronymic(String husbandPatronymic) {
-        this.husbandPatronymic = husbandPatronymic;
+    public void setHusbandPatronymicName(String husbandPatronymicName) {
+        this.husbandPatronymicName = husbandPatronymicName;
     }
 
-    public LocalDate getHusbandBirthDay() {
-        return husbandBirthDay;
+    public LocalDate getHusbandDateOfBirth() {
+        return husbandDateOfBirth;
     }
 
-    public void setHusbandBirthDay(LocalDate husbandBirthDay) {
-        this.husbandBirthDay = husbandBirthDay;
+    public void setHusbandDateOfBirth(LocalDate husbandDateOfBirth) {
+        this.husbandDateOfBirth = husbandDateOfBirth;
     }
 
     public String getHusbandPassportSerial() {
@@ -110,28 +118,28 @@ public class MarriageRequest implements Serializable {
         this.wifeSurName = wifeSurName;
     }
 
-    public String getWifeGivenName() {
-        return wifeGivenName;
+    public String getWifeFirstName() {
+        return wifeFirstName;
     }
 
-    public void setWifeGivenName(String wifeGivenName) {
-        this.wifeGivenName = wifeGivenName;
+    public void setWifeFirstName(String wifeFirstName) {
+        this.wifeFirstName = wifeFirstName;
     }
 
-    public String getWifePatronymic() {
-        return wifePatronymic;
+    public String getWifePatronymicName() {
+        return wifePatronymicName;
     }
 
-    public void setWifePatronymic(String wifePatronymic) {
-        this.wifePatronymic = wifePatronymic;
+    public void setWifePatronymicName(String wifePatronymicName) {
+        this.wifePatronymicName = wifePatronymicName;
     }
 
-    public LocalDate getWifeBirthDay() {
-        return wifeBirthDay;
+    public LocalDate getWifeDateOfBirth() {
+        return wifeDateOfBirth;
     }
 
-    public void setWifeBirthDay(LocalDate wifeBirthDay) {
-        this.wifeBirthDay = wifeBirthDay;
+    public void setWifeDateOfBirth(LocalDate wifeDateOfBirth) {
+        this.wifeDateOfBirth = wifeDateOfBirth;
     }
 
     public String getWifePassportSerial() {
