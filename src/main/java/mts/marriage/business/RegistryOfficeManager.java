@@ -128,17 +128,17 @@ public class RegistryOfficeManager {
         setMarriageCertQueryParam(query, request);
 
 
-        logger.info(""+query.getParameters().toString());
+        logger.info("params: "+query.getParameters().toString());
         List resultList = query.getResultList();
-        logger.info(""+resultList.toString());
+        logger.info("result list: "+resultList.toString());
 
         if (resultList.size() == 1) {
-            response.setExisting(true);
+            response.setMarried(true);
         }
 
         em.close();
 
-        logger.info("Ответ: " + response.toString());
+        logger.info("Ответ: " + response.isMarried());
 
         return response;
 

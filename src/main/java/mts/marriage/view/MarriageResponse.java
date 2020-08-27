@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class MarriageResponse implements Serializable {
 
-    private boolean existing;
+    private boolean married;
 
-    public boolean isExisting() {
-        return existing;
+    public boolean isMarried() {
+        return married;
     }
 
-    public void setExisting(boolean existing) {
-        this.existing = existing;
+    public void setMarried(boolean married) {
+        this.married = married;
     }
 
 }
