@@ -63,7 +63,7 @@ INSERT INTO ro_person(sex, last_name, first_name, patronymic, date_birth)
 VALUES (2, 'Васильев', 'Павел', 'Николаевич', '1995-03-18');
 
 INSERT INTO ro_person(sex, last_name, first_name, patronymic, date_birth)
-VALUES (2, 'Васильев', 'Никольный', 'Олегович', '2018-10-21');
+VALUES (2, 'Васильев', 'Александр', 'Павлович', '2015-01-11');
 
 INSERT INTO ro_passport(person_id, serial, number, date_issue, issue_department)
 VALUES ('1', '4321', '654321', '2017-04-05', 'Dep-1');
@@ -76,4 +76,4 @@ INSERT INTO ro_marriage_certificate (marriage_number, date_issue, husband_id, wi
 VALUES ('1', '2018-04-10', '2', '1', true, null);
 
 INSERT INTO ro_birth_certificate (person_id, mother_id, father_id, number_certificate, date_issue)
-VALUES (3, 1, 2, '123B', '2018-11-01');
+VALUES (3, 1, 2, '456123', '2015-01-21');

@@ -18,64 +18,70 @@ public class RegistryOfficeManager {
     private static final Logger logger = LoggerFactory.getLogger(RegistryOfficeManager.class);
 
     private static final String HQL_MARRIAGE_REQUEST = "select mc.marriageCertId from MarriageCert mc " +
-            "inner join Person pH on pH.personId = mc.husband " +
-            "inner join Person pW on pW.personId = mc.wife " +
-            "inner join Passport dH on dH.person = pH.personId " +
-            "inner join Passport dW on dW.person = pW.personId " +
+                "inner join Person pH on pH.personId = mc.husband " +
+                "inner join Person pW on pW.personId = mc.wife " +
+                "inner join Passport dH on dH.person = pH.personId " +
+                "inner join Passport dW on dW.person = pW.personId " +
             "where " +
-            "mc.issueDate <= CURRENT_DATE and mc.endDate is null " +
+                "mc.issueDate <= CURRENT_DATE and mc.endDate is null " +
 
-            "and pH.firstName  = ?1 " +
-            "and pH.lastName  = ?2 " +
-            "and pH.patronymic  = ?3 " +
-            "and pH.dateOfBirth  = ?4 " +
-            "and dH.serial  = ?5 " +
-            "and dH.number  = ?6 " +
-            "and dH.issueDate  = ?7 " +
+                "and pH.firstName  = ?1 " +
+                "and pH.lastName  = ?2 " +
+                "and pH.patronymic  = ?3 " +
+                "and pH.dateOfBirth  = ?4 " +
+                "and dH.serial  = ?5 " +
+                "and dH.number  = ?6 " +
+                "and dH.issueDate  = ?7 " +
 
-            "and pW.firstName  = ?8 " +
-            "and pW.lastName  = ?9 " +
-            "and pW.patronymic  = ?10 " +
-            "and pW.dateOfBirth  = ?11 " +
-            "and dW.serial  = ?12 " +
-            "and dW.number  = ?13 " +
-            "and dW.issueDate  = ?14 " +
+                "and pW.firstName  = ?8 " +
+                "and pW.lastName  = ?9 " +
+                "and pW.patronymic  = ?10 " +
+                "and pW.dateOfBirth  = ?11 " +
+                "and dW.serial  = ?12 " +
+                "and dW.number  = ?13 " +
+                "and dW.issueDate  = ?14 " +
 
-            "and mc.number = ?15 " +
-            "and mc.issueDate = ?16 ";
+                "and mc.number = ?15 " +
+                "and mc.issueDate = ?16 ";
 
     private static final String HQL_CERT = "select mc.marriageCertId from MarriageCert mc " +
             "where " +
-            "mc.issueDate <= CURRENT_DATE and mc.endDate is null " +
-            "and mc.number = ?1 " +
-            "and mc.issueDate = ?2";
+                "mc.issueDate <= CURRENT_DATE and mc.endDate is null " +
+                "and mc.number = ?1 " +
+                "and mc.issueDate = ?2";
 
     private static final String HQL_PARENT_REQUEST = "select bc.birthCertId from BirthCert bc " +
-            "inner join Person pF on pF.personId = bc.father " +
-            "inner join Person pM on pM.personId = bc.mother " +
-            "inner join Passport dF on dF.person = pF.personId " +
-            "inner join Passport dM on dM.person = pM.personId " +
+                "inner join Person pF on pF.personId = bc.father " +
+                "inner join Person pM on pM.personId = bc.mother " +
+                "inner join Person pC on pC.personId = bc.person " +
+                "inner join Passport dF on dF.person = pF.personId " +
+                "inner join Passport dM on dM.person = pM.personId " +
             "where " +
-            "bc.issueDate <= CURRENT_DATE " +
+                "bc.issueDate <= CURRENT_DATE " +
 
-            "and pF.firstName  = ?1 " +
-            "and pF.lastName  = ?2 " +
-            "and pF.patronymic  = ?3 " +
-            "and pF.dateOfBirth  = ?4 " +
-            "and dF.serial  = ?5 " +
-            "and dF.number  = ?6 " +
-            "and dF.issueDate  = ?7 " +
+                "and pF.firstName  = ?1 " +
+                "and pF.lastName  = ?2 " +
+                "and pF.patronymic  = ?3 " +
+                "and pF.dateOfBirth  = ?4 " +
+                "and dF.serial  = ?5 " +
+                "and dF.number  = ?6 " +
+                "and dF.issueDate  = ?7 " +
 
-            "and pM.firstName  = ?8 " +
-            "and pM.lastName  = ?9 " +
-            "and pM.patronymic  = ?10 " +
-            "and pM.dateOfBirth  = ?11 " +
-            "and dM.serial  = ?12 " +
-            "and dM.number  = ?13 " +
-            "and dM.issueDate  = ?14 " +
+                "and pM.firstName  = ?8 " +
+                "and pM.lastName  = ?9 " +
+                "and pM.patronymic  = ?10 " +
+                "and pM.dateOfBirth  = ?11 " +
+                "and dM.serial  = ?12 " +
+                "and dM.number  = ?13 " +
+                "and dM.issueDate  = ?14 " +
 
-            "and bc.number = ?15 " +
-            "and bc.issueDate = ?16 ";
+                "and pC.firstName  = ?15 " +
+                "and pC.lastName  = ?16 " +
+                "and pC.patronymic  = ?17 " +
+                "and pC.dateOfBirth  = ?18 " +
+
+                "and bc.number = ?19 " +
+                "and bc.issueDate = ?20 ";
 
     private MarriageDao marriageDao;
 
@@ -104,7 +110,7 @@ public class RegistryOfficeManager {
         logger.info(""+resultList.toString());
 
         if (resultList.size() == 1) {
-            response.setExisting(true);
+            response.setBorn(true);
         }
 
         em.close();
@@ -122,7 +128,6 @@ public class RegistryOfficeManager {
         MarriageResponse response = new MarriageResponse();
 
         String hql = HQL_MARRIAGE_REQUEST;
-//        String hql = HQL_CERT;
 
         Query query = em.createQuery(hql);
         setMarriageCertQueryParam(query, request);
@@ -138,7 +143,7 @@ public class RegistryOfficeManager {
 
         em.close();
 
-        logger.info("Ответ: " + response.isMarried());
+        logger.info("Ответ: " + response);
 
         return response;
 
@@ -213,6 +218,11 @@ public class RegistryOfficeManager {
         query.setParameter(count++, request.getMotherPassportSerial());
         query.setParameter(count++, request.getMotherPassportNumber());
         query.setParameter(count++, request.getMotherPassportDate());
+
+        query.setParameter(count++, request.getChildFirstName());
+        query.setParameter(count++, request.getChildSurName());
+        query.setParameter(count++, request.getChildPatronymicName());
+        query.setParameter(count++, request.getChildDateOfBirth());
 
         query.setParameter(count++, request.getBirthCertNumber());
         query.setParameter(count++, request.getBirthCertDate());

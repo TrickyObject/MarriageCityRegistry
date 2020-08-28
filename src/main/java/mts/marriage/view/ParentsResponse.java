@@ -4,14 +4,20 @@ import java.io.Serializable;
 
 public class ParentsResponse implements Serializable {
 
-    private boolean existing;
+    private boolean born;
 
-    public boolean isExisting() {
-        return existing;
+    public boolean isBorn() {
+        return born;
     }
 
-    public void setExisting(boolean existing) {
-        this.existing = existing;
+    public void setBorn(boolean born) {
+        this.born = born;
     }
 
+    @Override
+    public String toString() {
+        return "ParentsResponse{" +
+                "born=" + born +
+                '}';
+    }
 }

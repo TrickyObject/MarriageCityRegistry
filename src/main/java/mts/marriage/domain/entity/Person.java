@@ -31,10 +31,11 @@ public abstract class Person {
     private String patronymic;
     @Column(name = "date_birth")
     private LocalDate dateOfBirth;
-    @OneToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY,
-            mappedBy = "person")
+    @OneToOne(cascade = {CascadeType.REFRESH},
+            fetch = FetchType.LAZY, mappedBy = "person")
     private BirthCert birthCert;
-    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY, mappedBy = "person") // отношение между таблицами
+    @OneToMany(cascade = {CascadeType.REFRESH},
+            fetch = FetchType.LAZY, mappedBy = "person") // отношение между таблицами
     private List<Passport> passports;
 
 
