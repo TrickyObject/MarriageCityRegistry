@@ -5,6 +5,15 @@ import java.io.Serializable;
 public class ParentsResponse implements Serializable {
 
     private boolean born;
+    private String error;
+
+    @Override
+    public String toString() {
+        return "ParentsResponse{" +
+                "born=" + born +
+                ", error='" + error + '\'' +
+                '}';
+    }
 
     public boolean isBorn() {
         return born;
@@ -14,10 +23,11 @@ public class ParentsResponse implements Serializable {
         this.born = born;
     }
 
-    @Override
-    public String toString() {
-        return "ParentsResponse{" +
-                "born=" + born +
-                '}';
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

@@ -6,6 +6,7 @@ import mts.marriage.view.MarriageRequest;
 import mts.marriage.view.MarriageResponse;
 import mts.marriage.view.ParentsRequest;
 import mts.marriage.view.ParentsResponse;
+import org.hibernate.exception.JDBCConnectionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -100,24 +101,46 @@ public class RegistryOfficeManager {
 
         String hql = HQL_PARENT_REQUEST;
 
-        Query query = em.createQuery(hql);
-        setBirthCertQueryParam(query, request);
+        try {
+            Query query = em.createQuery(hql);
+            setBirthCertQueryParam(query, request);
 
 
-        logger.info(""+query.getParameters().toString());
-        List resultList = query.getResultList();
+            logger.info("" + query.getParameters().toString());
+            List resultList = query.getResultList();
 
-        logger.info(""+resultList.toString());
+            logger.info("" + resultList.toString());
 
-        if (resultList.size() == 1) {
-            response.setBorn(true);
+            if (resultList.size() == 1) {
+                response.setBorn(true);
+            }
+
+            em.close();
+
+            logger.info("Ответ: " + response.toString());
+
+            return response;
+        } catch (IllegalArgumentException e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Не верный формат аргумента");
+            logger.info("Отправлен отчёт об ошибке..");
+            return response;
+
+        } catch (JDBCConnectionException e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Нет соединения с БД");
+            logger.info("Отправлен отчёт об ошибке..");
+            return response;
+
+        } catch (Exception e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Не ошибка сервиса при проверке данных");
+            logger.info("Отправлен отчёт об ошибке..");
+            return response;
         }
-
-        em.close();
-
-        logger.info("Ответ: " + response.toString());
-
-        return response;
     }
 
     public MarriageResponse findMarriageCert(MarriageRequest request) {
@@ -129,23 +152,45 @@ public class RegistryOfficeManager {
 
         String hql = HQL_MARRIAGE_REQUEST;
 
-        Query query = em.createQuery(hql);
-        setMarriageCertQueryParam(query, request);
+        try {
+            Query query = em.createQuery(hql);
+            setMarriageCertQueryParam(query, request);
 
 
-        logger.info("params: "+query.getParameters().toString());
-        List resultList = query.getResultList();
-        logger.info("result list: "+resultList.toString());
+            logger.info("params: " + query.getParameters().toString());
+            List resultList = query.getResultList();
+            logger.info("result list: " + resultList.toString());
 
-        if (resultList.size() == 1) {
-            response.setMarried(true);
+            if (resultList.size() == 1) {
+                response.setMarried(true);
+            }
+
+            em.close();
+
+            logger.info("Ответ: " + response);
+
+            return response;
+        } catch (IllegalArgumentException e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Не верный формат аргумента");
+            logger.info("Отправлен отчёт об ошибке..");
+            return response;
+
+        } catch (JDBCConnectionException e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Нет соединения с БД");
+            logger.info("Отправлен отчёт об ошибке..");
+            return response;
+
+        } catch (Exception e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Не ошибка сервиса при проверке данных");
+            logger.info("Отправлен отчёт об ошибке..");
+            return response;
         }
-
-        em.close();
-
-        logger.info("Ответ: " + response);
-
-        return response;
 
     }
 
